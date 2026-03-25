@@ -1,0 +1,32 @@
+﻿  main.cpp
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,29): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,44): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,44): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,57): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,57): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,68): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(52,68): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(58,23): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(58,23): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(58,38): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(58,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,58): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,58): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,69): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(75,69): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(121,31): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(121,31): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(121,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(121,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,47): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,47): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.vcxproj -> C:\Users\jurij\Desktop\idkgame\main\x64\Debug\main.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
