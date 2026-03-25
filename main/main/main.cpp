@@ -100,9 +100,9 @@ public:
 	Vector2 getGunPoint();
 
 	//geter
-	Vector2 getPlayerCenter() { return position; }
-	Vector2 getRotatedOffset() { return rotatedOffset; }
-	Rectangle getPlayerHitbox() { return Rectangle{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, (float)sprite.width, (float)sprite.height }; }
+	Vector2 getPlayerCenter() const { return position; }
+	Vector2 getRotatedOffset() const { return rotatedOffset; }
+	Rectangle getPlayerHitbox() const { return Rectangle{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, (float)sprite.width, (float)sprite.height }; }
 };
 
 Player::Player(Vector2 pos)
@@ -182,13 +182,60 @@ float Player::calculateAngle(Camera2D camera)
 	return rotation;
 }
 
+class Enemy
+{
+private:
+	Vector2 position;
+	float speed{ 250.0f };
+	Texture2D sprite;
+	float rotation;
+public:
+	Enemy(Vector2 position);
+	void draw();
+	void update(Vector2 playerPos,const Player& player);
+	float calculateAngle(const Player& player);
+};
+
+Enemy::Enemy(Vector2 pos)
+	: position(pos)
+{
+	sprite = LoadTexture("assets/PNG/Zombie 1/zoimbie1_stand.png");
+}
+
+void Enemy::draw()
+{
+	Rectangle source{ 0, 0, sprite.width, sprite.height };
+	Rectangle dest{ position.x, position.y, sprite.width, sprite.height };
+	Vector2 origin{ sprite.width / 2.0f, sprite.height / 2.0f };
+	DrawTexturePro(sprite, source, dest, origin, rotation, WHITE);
+	//draw rectangle around enemy
+	Rectangle enemy_rect{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, sprite.width, sprite.height };
+	DrawRectangleLinesEx(enemy_rect, 1, WHITE);
+}
+
+void Enemy::update(Vector2 playerPos, const Player& player)
+{
+	Vector2 dir = Vector2Normalize(Vector2Subtract(playerPos, position));
+
+	position.x += dir.x * speed * GetFrameTime();
+	position.y += dir.y * speed * GetFrameTime();
+
+	rotation = calculateAngle(player);
+}
+
+float Enemy::calculateAngle(const Player& player)
+{
+	Vector2 dir = Vector2{ player.getPlayerCenter().x - position.x, player.getPlayerCenter().y - position.y };
+	float rotation = atan2f(dir.y, dir.x) * RAD2DEG;
+	return rotation;
+}
 
 class Bullet {
 private:
 	Vector2 position;
 	Vector2 velocity;
 	float radius{ 5.0f };
-	float speed{ 600.0f };
+	float speed{ 800.0f };
 
 public:
 	Bullet(Vector2 pos, Vector2 direction);
@@ -219,9 +266,10 @@ int main()
 {	
 	InitWindow(700, 700, "idk");
 
-	Player player{ Vector2 {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f} };
 	Map map;
-	
+	Player player{ Vector2 {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f} };
+	Enemy enemy{ Vector2 {0,0} };
+
 	std::vector<Bullet> bullets;
 
 	Camera2D camera{};
@@ -234,6 +282,7 @@ int main()
 		//update
 		camera.target = player.getPlayerCenter();
 		player.update(camera, map);
+		enemy.update(player.getPlayerCenter(), player);
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
@@ -256,6 +305,7 @@ int main()
 			{
 				map.draw();
 				player.draw();
+				enemy.draw();
 				for (Bullet& bullet : bullets)
 				{
 					bullet.draw();

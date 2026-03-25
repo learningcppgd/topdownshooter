@@ -27,6 +27,18 @@ C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,47): warning C4838: conver
 C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,47): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
 C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(122,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(207,32): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(207,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(207,46): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(207,46): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(208,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(208,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(208,62): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(208,62): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(212,99): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(212,99): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(212,113): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(212,113): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   main.vcxproj -> C:\Users\jurij\Desktop\idkgame\main\x64\Debug\main.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
