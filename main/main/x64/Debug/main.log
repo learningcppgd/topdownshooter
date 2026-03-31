@@ -1,52 +1,52 @@
 ﻿  main.cpp
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,29): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,44): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,44): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,57): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,57): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,68): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(61,68): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(67,23): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(67,23): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(67,38): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(67,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,58): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,58): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,69): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(84,69): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(131,31): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(131,31): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(131,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(131,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(132,47): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(132,47): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(132,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(132,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(229,32): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(229,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(229,46): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(229,46): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(230,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(230,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(230,62): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(230,62): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(234,99): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(234,99): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(234,113): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(234,113): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,53): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,89): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,108): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(302,108): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,29): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,44): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,44): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,57): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,57): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,68): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(72,68): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(79,23): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(79,23): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(79,38): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(79,38): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,58): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,58): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,69): warning C4838: conversion from 'const int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(96,69): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(143,31): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(143,31): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(143,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(143,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(144,47): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(144,47): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(144,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(144,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(246,32): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(246,32): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(246,46): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(246,46): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(247,48): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(247,48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(247,62): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(247,62): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(251,99): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(251,99): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(251,113): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(251,113): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,30): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,30): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,53): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,89): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,108): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\jurij\Desktop\idkgame\main\main\main.cpp(317,108): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   main.vcxproj -> C:\Users\jurij\Desktop\idkgame\main\x64\Debug\main.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
