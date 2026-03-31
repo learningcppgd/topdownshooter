@@ -1,9 +1,13 @@
-#include <iostream>
+﻿#include <iostream>
 #include "raylib.h"
 #include "raymath.h"
 #include <vector>
 #include <string>
+#include <array>
 
+//t → copy
+//t& → real object, can modify
+//const t& → real object, read - only
 
 class Map
 {
@@ -13,28 +17,33 @@ private:
 	const static int LEVEL_HEIGHT = 15;
 	const int TILE_SIZE = 64;
 
-	int level[LEVEL_HEIGHT][LEVEL_WIDTH] = {
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	};
+	std::array<std::array<int, LEVEL_WIDTH>, LEVEL_HEIGHT> level = { {
+	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
+	}};
 
 public:
 	Map();
 	void draw();
-	bool checkCollision(Rectangle rect);
+	bool checkCollisionWallPlayer(Rectangle rect);
+
+	const std::array<std::array<int, LEVEL_WIDTH>, LEVEL_HEIGHT> getLevel()& { return level; }
+	int getLevelWidth() const { return LEVEL_WIDTH; }
+	int getLevelHeight() const { return LEVEL_HEIGHT; }
+	int getTileSize() const { return TILE_SIZE; }
 };
 
 Map::Map()
@@ -64,7 +73,7 @@ void Map::draw()
 	}
 }
 
-bool Map::checkCollision(Rectangle rect)
+bool Map::checkCollisionWallPlayer(Rectangle rect)
 {
 	for (int y{ 0 }; y < LEVEL_HEIGHT; y++)
 	{
@@ -79,6 +88,7 @@ bool Map::checkCollision(Rectangle rect)
 	}
 	return false;
 }
+
 
 class Player {
 private:
@@ -157,7 +167,7 @@ void Player::update(Camera2D camera, Map& map)
 		(float)sprite.height
 	};
 
-	if (!map.checkCollision(hitboxX))
+	if (!map.checkCollisionWallPlayer(hitboxX))
 		position.x = newX;
 
 	float newY = position.y + direction.y * speed * GetFrameTime();
@@ -168,7 +178,7 @@ void Player::update(Camera2D camera, Map& map)
 		(float)sprite.height
 	};
 
-	if (!map.checkCollision(hitboxY))
+	if (!map.checkCollisionWallPlayer(hitboxY))
 		position.y = newY;
 
 	rotation = calculateAngle(camera);
@@ -189,17 +199,29 @@ private:
 	float speed{ 250.0f };
 	Texture2D sprite;
 	float rotation;
+	bool alive{ true };
+
 public:
 	Enemy(Vector2 position);
+	~Enemy();
 	void draw();
 	void update(Vector2 playerPos,const Player& player);
 	float calculateAngle(const Player& player);
+
+	Rectangle getRect() { return Rectangle{position.x, position.y, (float)sprite.width, (float)sprite.height}; }
+	bool isAlive() { return alive; }
+	void kill() { alive = false; }
 };
 
 Enemy::Enemy(Vector2 pos)
 	: position(pos)
 {
 	sprite = LoadTexture("assets/PNG/Zombie 1/zoimbie1_stand.png");
+}
+
+Enemy::~Enemy()
+{
+	UnloadTexture(sprite);
 }
 
 void Enemy::draw()
@@ -236,12 +258,17 @@ private:
 	Vector2 velocity;
 	float radius{ 5.0f };
 	float speed{ 800.0f };
+	bool active{ true };
 
 public:
 	Bullet(Vector2 pos, Vector2 direction);
 
 	void draw();
-	void update();
+	void update(Map& map, Enemy& enemy);
+	bool checkCollision(Map& map, Enemy& enemy);
+
+	Rectangle getBulletRect() { return Rectangle{ position.x, position.y, radius, radius }; }
+	bool isActive() const { return active; }
 };
 
 Bullet::Bullet(Vector2 pos, Vector2 direction)
@@ -255,10 +282,36 @@ void Bullet::draw()
 	DrawCircleV(position, radius, BLACK);
 }
 
-void Bullet::update()
+void Bullet::update(Map& map, Enemy& enemy)
 {
 	position.x += velocity.x * GetFrameTime();
-	position.y += velocity.y * GetFrameTime();
+	position.y += velocity.y * GetFrameTime();	
+
+	if (checkCollision(map,enemy)) active = false;
+}
+
+
+bool Bullet::checkCollision(Map& map, Enemy& enemy)
+{
+	for (int y{ 0 }; y < map.getLevelHeight(); y++)
+	{
+		for (int x{ 0 }; x < map.getLevelWidth(); x++)
+		{
+			if (map.getLevel()[y][x] == 1)
+			{
+				Rectangle wallRect = { x * map.getTileSize(), y * map.getTileSize(), map.getTileSize(), map.getTileSize()};
+				if (CheckCollisionRecs(wallRect, getBulletRect())) return true;
+			}
+		}
+	}
+
+	if (enemy.isAlive() && CheckCollisionRecs(getBulletRect(), enemy.getRect()))
+	{
+		enemy.kill();
+		return true;
+	}
+
+	return false;
 }
 
 
@@ -282,7 +335,10 @@ int main()
 		//update
 		camera.target = player.getPlayerCenter();
 		player.update(camera, map);
-		enemy.update(player.getPlayerCenter(), player);
+		if (enemy.isAlive())
+		{
+			enemy.update(player.getPlayerCenter(), player);
+		}
 
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
@@ -292,9 +348,14 @@ int main()
 			bullets.push_back(Bullet(start, dir));
 		}
 
-		for (Bullet& bullet : bullets)
+		for (int i{ 0 }; i < bullets.size(); i++)
 		{
-			bullet.update();
+			bullets[i].update(map, enemy);
+			if (!bullets[i].isActive())
+			{
+				bullets[i] = bullets.back();
+				bullets.pop_back();
+			}
 		}
 
 		//draw
@@ -305,7 +366,11 @@ int main()
 			{
 				map.draw();
 				player.draw();
-				enemy.draw();
+				if (enemy.isAlive())
+				{
+					enemy.draw();
+				}
+
 				for (Bullet& bullet : bullets)
 				{
 					bullet.draw();
