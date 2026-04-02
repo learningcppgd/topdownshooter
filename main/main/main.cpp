@@ -9,12 +9,14 @@
 //t& → real object, can modify
 //const t& → real object, read - only
 
+// add particles
+
 class Map
 {
 private:
 	Texture2D sprite;
-	const static int LEVEL_WIDTH = 20;
-	const static int LEVEL_HEIGHT = 15;
+	const static int LEVEL_WIDTH = 40;
+	const static int LEVEL_HEIGHT = 30;
 	const int TILE_SIZE = 64;
 
 	enum GroundType {
@@ -23,22 +25,37 @@ private:
 	};
 
 	std::array<std::array<int, LEVEL_WIDTH>, LEVEL_HEIGHT> level = { {
-	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1}},
-	{{1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1}},
-	{{1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1}},
-	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
-	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
-	}};
+	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1}},
+	{{1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1}},
+	{{1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1,1,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1}},
+	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}}
+	} };
 
 public:
 	Map();
@@ -105,21 +122,28 @@ bool Map::checkCollisionWallPlayer(Rectangle rect)
 class Player {
 private:
 	Vector2 position;
-	float speed{300.0f};
+	float speed{ 300.0f };
 	Texture2D sprite;
 	float rotation;
 	Vector2 rotatedOffset;
+
+	const int maxHp{ 100 };
 
 public:
 
 	Player(Vector2 pos);
 	~Player();
 
+	int hp{ maxHp };
+
 	void draw();
 	void update(Camera2D camera, Map& map);
 
 	float calculateAngle(Camera2D camera);
 	Vector2 getGunPoint();
+
+	// zracuna kolko se more zeleni bar premaknt v levo lolotorltorlotlro
+	float calculateOffsetForHp();
 
 	//geter
 	Vector2 getPlayerCenter() const { return position; }
@@ -140,17 +164,22 @@ Player::~Player()
 
 void Player::draw()
 {
-	Rectangle source{0, 0, sprite.width, sprite.height};
-	Rectangle dest{position.x, position.y, sprite.width, sprite.height};
-	Vector2 origin{sprite.width / 2.0f, sprite.height / 2.0f };
+	Rectangle source{ 0, 0, sprite.width, sprite.height };
+	Rectangle dest{ position.x, position.y, sprite.width, sprite.height };
+	Vector2 origin{ sprite.width / 2.0f, sprite.height / 2.0f };
 	DrawTexturePro(sprite, source, dest, origin, rotation, WHITE);
-	DrawRectangleLinesEx(getPlayerHitbox(), 1, RED);
+	/*DrawRectangleLinesEx(getPlayerHitbox(), 1, RED);*/
+
+
+	//draw hp
+	DrawRectangleV(Vector2{ position.x - sprite.width / 2.0f , position.y - (float)sprite.height }, Vector2{ (float)sprite.width, float(10.0f) }, RED);
+	DrawRectangleV(Vector2{ position.x - sprite.width / 2.0f , position.y - (float)sprite.height }, Vector2{ calculateOffsetForHp(), float(10.0f) }, GREEN);
 }
 
 Vector2 Player::getGunPoint()
 {
 	Vector2 center = position;
-	Vector2 localOffset = { 25.0f, 8.0f }; 
+	Vector2 localOffset = { 25.0f, 8.0f };
 
 	// rotate the offset by the player's rotation
 	float angleRad = rotation * DEG2RAD;
@@ -194,6 +223,7 @@ void Player::update(Camera2D camera, Map& map)
 		position.y = newY;
 
 	rotation = calculateAngle(camera);
+	calculateOffsetForHp();
 }
 
 float Player::calculateAngle(Camera2D camera)
@@ -204,6 +234,11 @@ float Player::calculateAngle(Camera2D camera)
 	return rotation;
 }
 
+float Player::calculateOffsetForHp()
+{
+	return (float)hp * sprite.width / maxHp;
+}
+
 class Enemy
 {
 private:
@@ -212,22 +247,32 @@ private:
 	Texture2D sprite;
 	float rotation;
 	bool alive{ true };
+	const int maxHp{ 20 };
 
 public:
 	Enemy(Vector2 position);
 	~Enemy();
+
+	int hp{ maxHp };
+
+	float calculateOffsetForHp();
+
 	void draw();
 	void update(const Player& player);
 	float calculateAngle(const Player& player);
+	void CollisionPlayer(Player& player);
+	void applyKnockback(Vector2 dir, float distance);
 
-	Rectangle getRect() { return Rectangle{
-		position.x - sprite.width / 2.0f, 
-		position.y - sprite.height / 2.0f,
-		(float)sprite.width,
-		(float)sprite.height};
+	Rectangle getRect() {
+		return Rectangle{
+position.x - sprite.width / 2.0f,
+position.y - sprite.height / 2.0f,
+(float)sprite.width,
+(float)sprite.height };
 	}
 	bool isAlive() { return alive; }
 	void kill() { alive = false; }
+	Vector2 getPosition() const { return position; }
 };
 
 Enemy::Enemy(Vector2 pos)
@@ -248,8 +293,12 @@ void Enemy::draw()
 	Vector2 origin{ sprite.width / 2.0f, sprite.height / 2.0f };
 	DrawTexturePro(sprite, source, dest, origin, rotation, WHITE);
 	//draw rectangle around enemy
-	Rectangle enemy_rect{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, sprite.width, sprite.height };
-	DrawRectangleLinesEx(enemy_rect, 1, WHITE);
+	/*Rectangle enemy_rect{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, sprite.width, sprite.height };
+	DrawRectangleLinesEx(enemy_rect, 1, WHITE);*/
+
+	//draw hp
+	DrawRectangleV(Vector2{ position.x - sprite.width / 2.0f , position.y - (float)sprite.height }, Vector2{ (float)sprite.width, float(10.0f) }, RED);
+	DrawRectangleV(Vector2{ position.x - sprite.width / 2.0f , position.y - (float)sprite.height }, Vector2{ calculateOffsetForHp(), float(10.0f) }, GREEN);
 }
 
 void Enemy::update(const Player& player)
@@ -269,12 +318,37 @@ float Enemy::calculateAngle(const Player& player)
 	return rotation;
 }
 
+void Enemy::CollisionPlayer(Player& player)
+{
+	if (isAlive() && CheckCollisionRecs(player.getPlayerHitbox(), getRect()))
+	{
+		kill();
+		player.hp -= 10;
+	}
+}
+
+void Enemy::applyKnockback(Vector2 dir, float distance)
+{
+	if (Vector2Length(dir) > 0.0f)
+	{
+		dir = Vector2Normalize(dir);
+		position = Vector2Add(position, Vector2Scale(dir, distance));
+	}
+}
+
+float Enemy::calculateOffsetForHp()
+{
+	return (float)hp * sprite.width / maxHp;
+}
+
 class Bullet {
 private:
 	Vector2 position;
 	Vector2 velocity;
 	float radius{ 5.0f };
 	float speed{ 800.0f };
+	int damage{ 5 };
+	float knockback{ 30.0f };
 
 public:
 	Bullet(Vector2 pos, Vector2 direction);
@@ -285,6 +359,8 @@ public:
 	bool checkCollisionEnemy(Enemy& enemy);
 
 	Rectangle getBulletRect() { return Rectangle{ position.x, position.y, radius, radius }; }
+	int getDamage() const { return damage; }
+	Vector2 getDirection() const { return Vector2Normalize(velocity); }
 };
 
 Bullet::Bullet(Vector2 pos, Vector2 direction)
@@ -314,7 +390,7 @@ bool Bullet::checkCollisionMap(Map& map)
 		{
 			if (map.getLevel()[y][x] == 1)
 			{
-				Rectangle wallRect = { x * map.getTileSize(), y * map.getTileSize(), map.getTileSize(), map.getTileSize()};
+				Rectangle wallRect = { x * map.getTileSize(), y * map.getTileSize(), map.getTileSize(), map.getTileSize() };
 				if (CheckCollisionRecs(wallRect, getBulletRect())) return true;
 			}
 		}
@@ -326,14 +402,21 @@ bool Bullet::checkCollisionEnemy(Enemy& enemy)
 {
 	if (enemy.isAlive() && CheckCollisionRecs(enemy.getRect(), getBulletRect()))
 	{
-		enemy.kill();
+		enemy.hp -= getDamage();
+		enemy.applyKnockback(getDirection(), knockback);
+
+		if (enemy.hp <= 0)
+		{
+			enemy.kill();
+		}
+
 		return true;
 	}
 	return false;
 }
 
 int main()
-{	
+{
 	InitWindow(700, 700, "idk");
 
 	Map map;
@@ -346,7 +429,7 @@ int main()
 	camera.offset = { GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f };
 	camera.rotation = 0.0f;
 	camera.zoom = 0.5f;
-	
+
 	int respawnTimer = 2;
 	float counter = 0;
 
@@ -361,18 +444,18 @@ int main()
 			Enemy* enemy = new Enemy{ Vector2 {
 				(float)GetRandomValue(0, GetScreenWidth()),
 				(float)GetRandomValue(0, GetScreenHeight())
-			}};
+			} };
 			enemies.push_back(enemy);
 			counter = 0;
 		}
 		counter += GetFrameTime();
 
-		for (Enemy* enemy : enemies)
+		for (int i{ 0 }; i < enemies.size(); i++)
 		{
-			if (enemy->isAlive())
+			enemies[i]->CollisionPlayer(player);
+			if (enemies[i]->isAlive())
 			{
-				//same as ->, *enemy gets the value of enemy
-				(*enemy).update(player);
+				enemies[i]->update(player);
 			}
 		}
 
