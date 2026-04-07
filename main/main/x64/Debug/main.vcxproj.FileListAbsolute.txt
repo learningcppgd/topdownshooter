@@ -1,1 +1,2 @@
 C:\Users\jurij\Desktop\idkgame\main\main\x64\Debug\main.vcxproj.Up2Date
+C:\Users\jurij\Desktop\topdownshooter\main\main\x64\Debug\main.vcxproj.Up2Date

@@ -9,15 +9,13 @@
 //t& → real object, can modify
 //const t& → real object, read - only
 
-// add particles
-
 class Map
 {
 private:
 	Texture2D sprite;
 	const static int LEVEL_WIDTH = 40;
 	const static int LEVEL_HEIGHT = 30;
-	const int TILE_SIZE = 64;
+	const float TILE_SIZE = 64;
 
 	enum GroundType {
 		GRASS = 0,
@@ -58,7 +56,7 @@ private:
 	} };
 
 public:
-	Map();
+	Map(Texture2D spriteMap);
 	~Map();
 	void draw();
 	bool checkCollisionWallPlayer(Rectangle rect);
@@ -69,9 +67,8 @@ public:
 	int getTileSize() const { return TILE_SIZE; }
 };
 
-Map::Map()
-{
-	sprite = LoadTexture("assets/Spritesheet/spritesheet_tiles.png");
+Map::Map(Texture2D spriteMap)
+	: sprite(spriteMap){
 }
 
 Map::~Map()
@@ -86,7 +83,7 @@ void Map::draw()
 	{
 		for (int x{ 0 }; x < LEVEL_WIDTH; x++)
 		{
-			Rectangle tileRect = { x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE };
+			Rectangle tileRect = { (float)x * TILE_SIZE, (float)y * TILE_SIZE, (float)TILE_SIZE, (float)TILE_SIZE };
 			if (level[y][x] == WALL)
 				DrawRectangleRec(tileRect, GRAY);
 			else
@@ -102,16 +99,16 @@ void Map::draw()
 	}
 }
 
-bool Map::checkCollisionWallPlayer(Rectangle rect)
-{
-	for (int y{ 0 }; y < LEVEL_HEIGHT; y++)
-	{
-		for (int x{ 0 }; x < LEVEL_WIDTH; x++)
-		{
-			if (level[y][x] == WALL)
-			{
-				Rectangle wallRect = { x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE };
-				if (CheckCollisionRecs(wallRect, rect)) return true;
+bool Map::checkCollisionWallPlayer(Rectangle rect) {
+	int startX = (int)(rect.x / TILE_SIZE);
+	int endX = (int)((rect.x + rect.width) / TILE_SIZE);
+	int startY = (int)(rect.y / TILE_SIZE);
+	int endY = (int)((rect.y + rect.height) / TILE_SIZE);
+
+	for (int y = startY; y <= endY; y++) {
+		for (int x = startX; x <= endX; x++) {
+			if (x >= 0 && x < LEVEL_WIDTH && y >= 0 && y < LEVEL_HEIGHT) {
+				if (level[y][x] == WALL) return true;
 			}
 		}
 	}
@@ -131,7 +128,7 @@ private:
 
 public:
 
-	Player(Vector2 pos);
+	Player(Vector2 pos, Texture2D spritePlayer);
 	~Player();
 
 	int hp{ maxHp };
@@ -151,10 +148,8 @@ public:
 	Rectangle getPlayerHitbox() const { return Rectangle{ position.x - sprite.width / 2.0f, position.y - sprite.height / 2.0f, (float)sprite.width, (float)sprite.height }; }
 };
 
-Player::Player(Vector2 pos)
-	:position(pos)
-{
-	sprite = LoadTexture("assets/PNG/Hitman 1/hitman1_gun.png");
+Player::Player(Vector2 pos, Texture2D spritePlayer)
+	:position(pos), sprite(spritePlayer) {
 }
 
 Player::~Player()
@@ -247,11 +242,10 @@ private:
 	Texture2D sprite;
 	float rotation;
 	bool alive{ true };
-	const int maxHp{ 20 };
+	int maxHp{ 20 };
 
 public:
-	Enemy(Vector2 position);
-	~Enemy();
+	Enemy(Vector2 position, Texture2D enemySprite);
 
 	int hp{ maxHp };
 
@@ -265,25 +259,18 @@ public:
 
 	Rectangle getRect() {
 		return Rectangle{
-position.x - sprite.width / 2.0f,
-position.y - sprite.height / 2.0f,
-(float)sprite.width,
-(float)sprite.height };
+			position.x - sprite.width / 2.0f,
+			position.y - sprite.height / 2.0f,
+			(float)sprite.width,
+			(float)sprite.height };
 	}
 	bool isAlive() { return alive; }
 	void kill() { alive = false; }
 	Vector2 getPosition() const { return position; }
 };
 
-Enemy::Enemy(Vector2 pos)
-	: position(pos)
-{
-	sprite = LoadTexture("assets/PNG/Zombie 1/zoimbie1_stand.png");
-}
-
-Enemy::~Enemy()
-{
-	UnloadTexture(sprite);
+Enemy::Enemy(Vector2 pos, Texture2D enemySprite)
+	: position(pos), sprite(enemySprite){
 }
 
 void Enemy::draw()
@@ -415,15 +402,55 @@ bool Bullet::checkCollisionEnemy(Enemy& enemy)
 	return false;
 }
 
+class Particle
+{
+private:
+	Vector2 position;
+	Vector2 velocity;
+	float maxlifetime;
+	float radius;
+
+public:
+	float lifetime{ maxlifetime };
+
+	Particle(Vector2 pos, Vector2 vel);
+	void draw();
+	void update();
+
+};
+
+Particle::Particle(Vector2 pos, Vector2 vel)
+	: position(pos), velocity(vel)
+{
+	maxlifetime = (float)GetRandomValue(5, 10) / 10.0f;
+	lifetime = maxlifetime;
+	radius = (float)GetRandomValue(2, 5);
+}
+
+void Particle::update()
+{
+	position.x += velocity.x * GetFrameTime();
+	position.y += velocity.y * GetFrameTime();
+	lifetime -= GetFrameTime();
+}
+
+void Particle::draw()
+{
+	float alpha = lifetime / maxlifetime;
+	DrawCircleV(position, radius, ColorAlpha(RED, alpha));
+}
+
 int main()
 {
 	InitWindow(700, 700, "idk");
 
-	Map map;
-	Player player{ Vector2 {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f} };
+	Map map{ LoadTexture("assets/Spritesheet/spritesheet_tiles.png")};
+	Texture2D enemy_texture{ LoadTexture("assets/PNG/Zombie 1/zoimbie1_stand.png") };
+	Player player{ Vector2 {GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f}, LoadTexture("assets/PNG/Hitman 1/hitman1_gun.png")};
 
-	std::vector<Bullet*> bullets;
-	std::vector<Enemy*> enemies;
+	std::vector<Bullet> bullets;
+	std::vector<Enemy> enemies;
+	std::vector<Particle> particles;
 
 	Camera2D camera{};
 	camera.offset = { GetScreenWidth() / 2.0f, GetScreenHeight() / 2.0f };
@@ -441,21 +468,25 @@ int main()
 
 		if (counter > respawnTimer)
 		{
-			Enemy* enemy = new Enemy{ Vector2 {
+			Enemy enemy = { Vector2 {
 				(float)GetRandomValue(0, GetScreenWidth()),
-				(float)GetRandomValue(0, GetScreenHeight())
-			} };
+				0
+			}, enemy_texture};
 			enemies.push_back(enemy);
 			counter = 0;
 		}
 		counter += GetFrameTime();
 
-		for (int i{ 0 }; i < enemies.size(); i++)
+		for (int i{ (int)enemies.size() - 1}; i >= 0; i--)
 		{
-			enemies[i]->CollisionPlayer(player);
-			if (enemies[i]->isAlive())
+			enemies[i].CollisionPlayer(player);
+			if (enemies[i].isAlive())
 			{
-				enemies[i]->update(player);
+				enemies[i].update(player);
+			}
+			else
+			{
+				enemies.erase(enemies.begin() + i);
 			}
 		}
 
@@ -464,26 +495,32 @@ int main()
 			Vector2 start = player.getGunPoint();
 			Vector2 mouseWorld = GetScreenToWorld2D(GetMousePosition(), camera);
 			Vector2 dir = Vector2Subtract(mouseWorld, start);
-			bullets.push_back(new Bullet(start, dir));
+			bullets.push_back(Bullet(start, dir));
 		}
 
 		for (int i{ 0 }; i < bullets.size();)
 		{
-			Bullet* bullet = bullets[i];
-			bullet->update();
+			Bullet& bullet = bullets[i];
+			bullet.update();
 
 			bool removeBullet = false;
 
-			if (bullet->checkCollisionMap(map))
+			if (bullet.checkCollisionMap(map))
 			{
 				removeBullet = true;
 			}
 			else
 			{
-				for (Enemy* enemy : enemies)
+				for (Enemy& enemy : enemies)
 				{
-					if (bullet->checkCollisionEnemy(*enemy))
+					if (bullet.checkCollisionEnemy(enemy))
 					{
+						for (int j{ 0 }; j < 10; j++)
+						{
+							Vector2 random_velocity = Vector2{ (float)GetRandomValue(-150,150), (float)GetRandomValue(-150,150) };
+							Particle particle{ enemy.getPosition(), random_velocity };
+							particles.push_back(particle);
+						}
 						removeBullet = true;
 						break;
 					}
@@ -491,12 +528,20 @@ int main()
 			}
 			if (removeBullet)
 			{
-				delete bullet;
 				bullets.erase(bullets.begin() + i);
 			}
 			else
 			{
 				++i;
+			}
+		}
+
+		for (int i{ (int)particles.size() - 1 }; i >= 0; i--)
+		{
+			particles[i].update();
+			if (particles[i].lifetime < 0)
+			{
+				particles.erase(particles.begin() + i);
 			}
 		}
 
@@ -508,32 +553,29 @@ int main()
 			{
 				map.draw();
 				player.draw();
-				for (Enemy* enemy : enemies)
+				for (Enemy enemy : enemies)
 				{
-					if (enemy->isAlive())
+					if (enemy.isAlive())
 					{
-						enemy->draw();
+						enemy.draw();
 					}
 				}
 
-				for (Bullet* bullet : bullets)
+				for (Bullet bullet : bullets)
 				{
-					(*bullet).draw(); // same as bullet->draw()
+					bullet.draw(); 
+				}
+
+				for (Particle particle : particles)
+				{
+					particle.draw();
 				}
 			}
 			EndMode2D();
 		}
 		EndDrawing();
 	}
-	for (Bullet* bullet : bullets)
-	{
-		delete bullet;
-	}
 
-	for (Enemy* enemy : enemies)
-	{
-		delete enemy;
-	}
 	CloseWindow();
 	return 0;
 }

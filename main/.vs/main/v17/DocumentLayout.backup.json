@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\jurij\\Desktop\\idkgame\\main\\",
+  "WorkspaceRootPath": "C:\\Users\\jurij\\Desktop\\topdownshooter\\main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{462B5F26-2F5D-4AA3-89EB-3640296DC23F}|main\\main.vcxproj|C:\\Users\\jurij\\Desktop\\idkgame\\main\\main\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{462B5F26-2F5D-4AA3-89EB-3640296DC23F}|main\\main.vcxproj|C:\\Users\\jurij\\Desktop\\topdownshooter\\main\\main\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{462B5F26-2F5D-4AA3-89EB-3640296DC23F}|main\\main.vcxproj|solutionrelative:main\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\jurij\\Desktop\\idkgame\\main\\main\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\jurij\\Desktop\\topdownshooter\\main\\main\\main.cpp",
               "RelativeDocumentMoniker": "main\\main.cpp",
-              "ToolTip": "C:\\Users\\jurij\\Desktop\\idkgame\\main\\main\\main.cpp",
+              "ToolTip": "C:\\Users\\jurij\\Desktop\\topdownshooter\\main\\main\\main.cpp",
               "RelativeToolTip": "main\\main.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAiwBwAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAO4BAAAAAAAAAAAAAD8CAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-03-18T17:47:26.946Z",
               "IsPinned": true,
