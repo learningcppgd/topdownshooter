@@ -402,43 +402,42 @@ bool Bullet::checkCollisionEnemy(Enemy& enemy)
 	return false;
 }
 
-class Particle
-{
+class Particle {
 private:
 	Vector2 position;
 	Vector2 velocity;
-	float maxlifetime;
+	float max_hp;
 	float radius;
-
+	Color color;
 public:
-	float lifetime{ maxlifetime };
 
-	Particle(Vector2 pos, Vector2 vel);
+	float hp;
+	Particle(Vector2 pos, Vector2 vel, Color col);
 	void draw();
 	void update();
-
 };
 
-Particle::Particle(Vector2 pos, Vector2 vel)
-	: position(pos), velocity(vel)
+Particle::Particle(Vector2 pos, Vector2 vel, Color col)
+	: position(pos), velocity(vel), color(col)
 {
-	maxlifetime = (float)GetRandomValue(5, 10) / 10.0f;
-	lifetime = maxlifetime;
+	max_hp = (float)GetRandomValue(5, 10) / 10.0f;
 	radius = (float)GetRandomValue(2, 5);
+	hp = max_hp;
 }
 
 void Particle::update()
 {
 	position.x += velocity.x * GetFrameTime();
 	position.y += velocity.y * GetFrameTime();
-	lifetime -= GetFrameTime();
+	hp -= GetFrameTime();
 }
 
 void Particle::draw()
 {
-	float alpha = lifetime / maxlifetime;
-	DrawCircleV(position, radius, ColorAlpha(RED, alpha));
+	float alpha = hp / max_hp;
+	DrawCircleV(position, radius, ColorAlpha(color, alpha));
 }
+
 
 int main()
 {
@@ -517,9 +516,12 @@ int main()
 					{
 						for (int j{ 0 }; j < 10; j++)
 						{
-							Vector2 random_velocity = Vector2{ (float)GetRandomValue(-150,150), (float)GetRandomValue(-150,150) };
-							Particle particle{ enemy.getPosition(), random_velocity };
-							particles.push_back(particle);
+							Vector2 random_velocity =
+							{
+								(float)GetRandomValue(-150,150),
+								(float)GetRandomValue(-150,150)
+							};
+							particles.push_back(Particle(enemy.getPosition(), random_velocity, DARKGREEN));
 						}
 						removeBullet = true;
 						break;
@@ -536,14 +538,16 @@ int main()
 			}
 		}
 
-		for (int i{ (int)particles.size() - 1 }; i >= 0; i--)
+		for (int i{ (int)particles.size() - 1}; i >= 0; i--)
 		{
 			particles[i].update();
-			if (particles[i].lifetime < 0)
+			if (particles[i].hp < 0)
 			{
 				particles.erase(particles.begin() + i);
 			}
 		}
+
+		
 
 		//draw
 		BeginDrawing();
@@ -570,6 +574,7 @@ int main()
 				{
 					particle.draw();
 				}
+
 			}
 			EndMode2D();
 		}
